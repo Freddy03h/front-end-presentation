@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>A presentation of front-end languages, tools and frameworks</title>
+
+  <meta name="description" content="A presentation of front-end languages, tools and frameworks">
+  <meta name="author" content="Freddy Harris">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <section>
+          <h1>front-end</h1>
+          <h3>languages, frameworks and tools</h3>
+          <p>
+            <small><a href="http://freddy03h.github.io">Freddy Harris</a> / <a href="http://twitter.com/harrisfreddy">@harrisfreddy</a></small>
+          </p>
+        </section>
+        <section data-background="img/mydesk.jpg"></section>
+      </section>
+
+      <section>
+
+        <section>
+          <h2>HTML 5</h2>
+          <h3>Dernière révision majeur d'HTML.</h3>
+
+          <p>Contient de nouveaux éléments :</p>
+
+          <ul>
+            <li><code>&lt;main&gt;</code></li>
+            <li><code>&lt;section&gt;</code></li>
+            <li><code>&lt;article&gt;</code></li>
+            <li><code>&lt;header&gt;</code></li>
+            <li><code>&lt;footer&gt;</code></li>
+            <li><code>&lt;aside&gt;</code></li>
+            <li><code>&lt;nav&gt;</code></li>
+            <li>…</li>
+          </ul>
+
+          <p>Et de nouveaux attributs pour des balises existantes.</p>
+
+          <p><small>
+            Pour l'exhaustivité, voir <a href="http://fr.wikipedia.org/wiki/HTML5">Wikipédia HTML 5</a>
+          </small></p>
+
+          <!--<aside class="notes">
+            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+          </aside>-->
+        </section>  
+
+        <section>
+          <h2>Autant de ramdam pour quelques balises ?</h2>
+        </section>  
+
+        <section>
+          <h2>HTML 5 est un mot valise</h2>
+          <a class="image" href="img/HTML5.png" target="_blank">
+            <img src="img/HTML5.png" alt="HTML 5" />
+          </a>
+        </section>              
+      </section>
+
+      <section>
+        <section>
+          <h2>CSS 3</h2>
+          <ul>
+            <li>Transforms</li>
+            <li>Transitions</li>
+            <li>Animations</li>
+            <li>Flexible Box Model</li>
+          </ul>
+        </section>
+        <section>
+          <h2>CSS Transforms 2d</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2>CSS Transforms 3d</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2>CSS Animations</h2>
+          <p></p>
+        </section>
+        <section>
+          <h2>Flexible Box Model</h2>
+          <p></p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Préprocesseur CSS</h2>
+          <h3>Présentation de Sass</h3>
+          <p>Outil permettant de transformer un langage, en CSS valide.</p>
+          <p><small><a href="http://sass-lang.com/">sass-lang.com</a></small></p>
+        </section>
+
+        <section>
+          <h3>Pourquoi ?</h3>
+        </section>
+
+        <section>
+          <h3>Parce que CSS peut être chiant parfois</h3>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Styles liés à un élément</h3>
+          <pre><code data-trim contenteditable>
+#user {
+  display: block;
+}
+#user p{
+  text-align: center;
+}
+#user img{
+  max-width: 250px;
+}
+#user .friend-list{
+  border: solid black 1px;
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Imbrication</h3>
+          <pre><code data-trim contenteditable>
+#user {
+  display: block;
+  p{
+    text-align: center;
+  }
+  img{
+    max-width: 250px;
+  }
+  .friend-list{
+    border: solid black 1px;
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Duplication de code</h3>
+          <pre><code data-trim contenteditable>
+#tweet {
+  border-bottom: solid #3b88c3 2px;
+}
+a {
+  color: #3b88c3;
+}
+button[type=submit] {
+  background-color: #3b88c3;
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Variables</h3>
+          <pre><code data-trim contenteditable>
+$color-blue: #3b88c3;
+#tweet {
+  border-bottom: solid $color-blue 2px;
+}
+a {
+  color: $color-blue;
+}
+button[type=submit] {
+  background-color: $color-blue;
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Calculs à la main</h3>
+          <pre><code data-trim contenteditable>
+#post {
+  width: 70px; /* 100px - (15px*2) */
+  padding: 15px;
+}
+.list li {
+  color: white;
+  background-color: #000;
+}
+.list li:nth-child(even) {
+  background-color: #1a1a1a; /* noir "moins foncé" pour les LI pairs */
+}
+          </code></pre>
+        </section>
+
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Calculs</h3>
+          <pre><code data-trim contenteditable>
+$color-black: #000;
+$width: 100px;
+$padding: 15px;
+#post {
+  width: $width - ($padding * 2);
+  padding: $padding;
+}
+.list {
+  li {
+    color: white;
+    background-color: $color-black;
+    &:nth-child(even) {
+      background-color: lighten($color-black, 10);
+    }
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Logique dupliquée</h3>
+          <pre><code data-trim contenteditable>
+$color-link: #00f;
+$color-btn: #0f0;
+
+a{
+  color: $color-link;
+  &:hover{
+    color:lighten($color-link, 10);
+  }
+}
+.btn{
+  color: $color-btn;
+  &:hover{
+    color:lighten($color-btn, 10);
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Mixins</h3>
+          <pre><code data-trim contenteditable>
+$color-link: #00f;
+$color-btn: #0f0;
+@mixin hover-element($color){
+  &{
+    color: $color;
+  }
+  &:hover{
+    color:lighten($color, 10);
+  }
+}
+
+a{
+  @include hover-element($color-link);
+}
+.btn{
+  @include hover-element($color-btn);
+}
+          </code></pre>
+        </section>
+
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Un fichier CSS énorme</h3>
+          <p>ou</p>
+          <h3>Plusieurs fichiers CSS à charger</h3>
+        </section>
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Import</h3>
+          <pre><code data-trim contenteditable>
+@import 'style/sass/_variable.scss';
+
+@import 'style/sass/_form.scss';
+@import 'style/sass/_header.scss';
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Classes CSS liés à la présentation dans le HTML …</h3>
+          <pre><code data-trim contenteditable>
+<div id="menu" class="column-1"> … </div>
+<div id="main" class="column-2"> … </div>
+<div id="ad" class="column-1"> … </div>
+          </code></pre>
+          <pre><code data-trim contenteditable>
+.column-1{
+  width: 320px;
+}
+.column-2{
+  width: 640px;
+}
+#menu{ … }
+#main{ … }
+#ad  { … }
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>… ou CSS difficile à maintenir</h3>
+          <pre><code data-trim contenteditable>
+<div id="menu"> … </div>
+<div id="main"> … </div>
+<div id="ad"> … </div>
+          </code></pre>
+          <pre><code data-trim contenteditable>
+.column-1, #menu, #ad{
+  width: 320px;
+}
+.column-2, #main{
+  width: 640px;
+}
+#menu{ … }
+#main{ … }
+#ad  { … }
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Extend</h3>
+          <pre><code data-trim contenteditable>
+<div id="menu"> … </div>
+<div id="main"> … </div>
+<div id="ad"> … </div>
+          </code></pre>
+          <pre><code data-trim contenteditable>
+.column-1{
+  width: 320px;
+}
+.column-2{
+  width: 640px;
+}
+#menu{ @extend .column-1; }
+#main{ @extend .column-2; }
+#ad  { @extend .column-1; }
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Problème</h4>
+          <h3>Préfixes</h3>
+          <pre><code data-trim contenteditable>
+-webkit-border-radius:15px;
+-moz-border-radius:15px;
+border-radius:15px;
+
+-webkit-box-shadow:0 0 5px black;
+-moz-box-shadow:0 0 5px black;
+box-shadow:0 0 5px black;
+          </code></pre>
+        </section>
+
+        <section>
+          <h4>Solution</h4>
+          <h3>Compass</h3>
+          <pre><code data-trim contenteditable>
+@include border-radius(15px);
+
+@include box-shadow(0 0 5px black);
+          </code></pre>
+          <p><small><a href="http://compass-style.org/">compass-style.org</a></small></p>
+        </section>
+
+        <section>
+          <h3>Installation Sass et Compass</h3>
+          <p>Dépendance à Ruby</p>
+          <pre><code data-trim contenteditable>
+gem install compass
+          </code></pre>
+          <pre><code data-trim contenteditable>
+cd path/to/stylesheet
+compass create myproject
+          </code></pre>
+          <pre><code data-trim contenteditable>
+compass watch
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>Les autres</h3>
+          <ul>
+            <li>LESS</li>
+            <li>Stylus</li>
+            <li>Rework</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>JavaScript</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>SPA</h2>
+          <h3>Single Page Application</h3>
+          <p>Applications écrites totalement en HTML 5, CSS 3 et JavaScript.</p>
+        </section>
+
+        <section>
+          <h3>Pourquoi ?</h3>
+          <p>Pour offrir une expérience utilisateur optimale, sans la lenteur des changements de page.</p>
+        </section>
+
+        <section>
+          <h3>Comment ?</h3>
+          
+        </section>
+        <section data-transition="none">
+          <a class="image" href="img/spa-0.png" target="_blank">
+            <img src="img/spa-0.png" />
+          </a>
+          <aside class="notes">
+Premièrement, les données existe une dans les bases de données, des fichiers, voire de services Web. 
+Sur demande, la logique de données extrait et organise les données nécessaires pour répondre à la requête dans un modèle de données à rendre à l'utilisateur. 
+Ensuite, le modèle est combinée avec un template pour générer le code HTML que le navigateur va finalement afficher à l'utilisateur. 
+Avant et / ou après le contenu soit affiché, la logique de comportement est "attaché" au document HTML. 
+Lors de l'interaction utilisateur, la logique de comportement gère l'interaction pour mettre à jour tout ou une partie de l'application.
+          </aside>
+        </section>
+        <section data-transition="none">
+          <a class="image" href="img/spa-1.png" target="_blank">
+            <img src="img/spa-1.png" />
+          </a>
+        </section>
+        <section data-transition="none">
+          <a class="image" href="img/spa-2.png" target="_blank">
+            <img src="img/spa-2.png" />
+          </a>
+        </section>
+        <section data-transition="none">
+          <a class="image" href="img/spa-3.png" target="_blank">
+            <img src="img/spa-3.png" />
+          </a>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Backbone.js</h2>
+          <p><small><a href="http://backbonejs.org/">backbonejs.org</a></small></p>
+        </section>
+        <section>
+          <p>Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.</p>
+        </section>
+        <section>
+          <a class="image" href="img/backbone_mvc.png" target="_blank">
+            <img src="img/backbone_mvc.png" />
+          </a>
+        </section>
+        <section>
+          <h3>Models</h3>
+          <ul>
+            <li>Prévus pour encapsuler des ressources</li>
+            <li>S'utilise en "étandant" l'objet Backbone.Model</li>
+            <li>Les méthodes get() et set() permettent d'acceder et modifier les données</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Models</h3>
+          <pre><code data-trim contenteditable>
+var User = Backbone.Model.extend({
+  initialize: function(){
+    console.log('user created');
+  },
+  login: function(){
+    //login code
+  }
+});
+
+var user = new User({name: "Ioan Roxin", email: "iroxin@ufc.fr"});
+
+var name = user.get('name');
+          </code></pre>
+        </section>
+        <section>
+          <h3>Collections</h3>
+          <p>Ensemble de models</p>
+          <p>Bénéficie des fonctions de manipulation d'Underscore</p>
+        </section>
+        
+        
+      </section>
+
+      </div>
+
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+          // Parallax scrolling
+          // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+          // parallaxBackgroundSize: '2100px 900px',
+
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+
+  </script>
+
+</body>
+</html>
