@@ -521,8 +521,40 @@ var name = user.get('name');
         </section>
         <section>
           <h3>Collections</h3>
-          <p>Ensemble de models</p>
-          <p>Bénéficie des fonctions de manipulation d'Underscore</p>
+          <ul>
+            <li>Ensemble de models</li>
+            <li>Bénéficie des fonctions de manipulation d'Underscore</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Collections</h3>
+          <pre><code data-trim contenteditable>
+var Book = Backbone.Model.extend();
+var Library = Backbone.Collection.extend({
+  model: Book
+});
+
+var library = new Library([
+  {
+    title: "Javascript: The Good Parts",
+    author: "D Crockford"
+  },{
+    title: "High Performance JavaScript",
+    author: "Nicholas C Zakas"
+  },{
+    title: "JavaScript Web Applications",
+    author: "Alex Maccaw"
+  }
+]);
+          </code></pre>
+        </section>
+        <section>
+          <h3>Views</h3>
+          <ul>
+            <li>Un modèle est attaché à une vue</li>
+            <li>Les vues sont aussi un peu des controlleurs</li>
+            <li>Les vues écoutent les évenements de l'UI et des modèles</li>
+          </ul>
         </section>
         
         
