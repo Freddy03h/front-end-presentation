@@ -549,11 +549,47 @@ var library = new Library([
           </code></pre>
         </section>
         <section>
-          <h3>Views</h3>
+          <h3>view</h3>
           <ul>
             <li>Un modèle est attaché à une vue</li>
             <li>Les vues sont aussi un peu des controlleurs</li>
             <li>Les vues écoutent les évenements de l'UI et des modèles</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>view</h3>
+          <pre><code data-trim contenteditable>
+var DocumentRow = Backbone.View.extend({
+  tagName: "li",
+  className: "document-row",
+  events: {
+    "click .icon":          "open",
+    "click .button.edit":   "openEditDialog",
+    "click .button.delete": "destroy"
+  },
+  initialize: function() {
+    this.listenTo(this.model, "change", this.render);
+  },
+  render: function() { ... }
+});
+
+var doc = documents.first();
+var docRowView = new DocumentRow({
+  model: doc,
+  id: "document-row-" + doc.id
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>view.el</h3>
+          <ul>
+            <li>Une vue possède obligatoirement un <code>el</code></li>
+            <li><code>el</code> fait référence à l'objet Element</li>
+            <li><code>el</code> peut être inséré dans la page ou non</li>
+            <li><code>el</code> est créé à partir de <code>tagName</code>, <code>className</code>, <code>id</code> et <code>attributes</code></li>
+            <li>Référence jQuery en cache : <code>$el</code></li>
           </ul>
         </section>
         
