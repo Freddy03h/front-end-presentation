@@ -434,6 +434,17 @@ compass watch
         <section>
           <h2>JavaScript</h2>
         </section>
+        <section>
+          <a class="image" href="img/js-tools.jpeg" target="_blank">
+            <img src="img/js-tools.jpeg" />
+          </a>
+        </section>
+        <section>
+          <h3>ressources</h3>
+          <ul>
+            <li><a href="http://superherojs.com">superherojs.com</a></li>
+          </ul>
+        </section>
       </section>
 
       <section>
@@ -592,10 +603,108 @@ var docRowView = new DocumentRow({
             <li>Référence jQuery en cache : <code>$el</code></li>
           </ul>
         </section>
+
+        <section>
+          <h3>view.template</h3>
+          <ul>
+            <li>Seulement une convention de Backbone</li>
+            <li>Utiliser un outil de templating</li>
+            <li>Undescore, Mustache, Handlebars, Jade, …</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>_.template</h3>
+          <p>Compile des templates JavaScript en fonction à évaluer avec les données pour le rendu.<br/>Utilise la notation ERB <%= … %> <% … %></p>
+          <pre><code data-trim contenteditable>
+var compiled = _.template("hello: <%= name %>");
+compiled({name: 'moe'});
+=> "hello: moe"
+
+var list = "<% _.each(people, function(name) { %> <li><%= name %></li> <% }); %>";
+_.template(list, {people: ['moe', 'curly', 'larry']});
+=> "<li>moe</li><li>curly</li><li>larry</li>"
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>view.render</h3>
+          <p>Fonction à surcharger pour rendre la vue</p>
+          <pre><code data-trim contenteditable>
+var Bookmark = Backbone.View.extend({
+  template: _.template(...),
+  render: function() {
+    this.$el.html( this.template( this.model.toJSON() ) );
+    return this;
+  }
+});
+          </code></pre>
+        </section>
         
         
       </section>
 
+      <section>
+        <section>
+          <h2>Marionette</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Require</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Node.js</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Grunt</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Bower</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Yo</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Yeoman</h2>
+          <h3>Yo + Grunt + Bower</h3>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>API REST</h2>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>GIT</h2>
+        </section>
+      </section>
+<!--
+      <section>
+        <section>
+          <h2>Responsive + Mobile-first</h2>
+        </section>
+      </section>
+-->
       </div>
 
   </div>
