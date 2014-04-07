@@ -506,7 +506,7 @@ Lors de l'interaction utilisateur, la logique de comportement gère l'interactio
           </a>
         </section>
         <section>
-          <h3>Models</h3>
+          <h3>Model</h3>
           <ul>
             <li>Prévus pour encapsuler des ressources</li>
             <li>S'utilise en "étandant" l'objet Backbone.Model</li>
@@ -514,7 +514,7 @@ Lors de l'interaction utilisateur, la logique de comportement gère l'interactio
           </ul>
         </section>
         <section>
-          <h3>Models</h3>
+          <h3>Model</h3>
           <pre><code data-trim contenteditable>
 var User = Backbone.Model.extend({
   initialize: function(){
@@ -530,6 +530,182 @@ var user = new User({name: "Ioan Roxin", email: "iroxin@ufc.fr"});
 var name = user.get('name');
           </code></pre>
         </section>
+
+        <section>
+          <h3>model.id</h3>
+          <p>Attribut spécial du modèle permettant de l'identifier de manière unique</p>
+          <hr>
+          <h3>model.idAttribute</h3>
+          <pre><code data-trim contenteditable>
+var Book = Backbone.Model.extend({
+  idAttribute: "isbn"
+});
+
+var akira = new Book({ isbn: "978-2723412162", name: "Akira Tome 1" });
+alert("Akira id: " + akira.id);
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.defaults</h3>
+          <p>Créer un modèle avec des attributs par défaut</p>
+          <pre><code data-trim contenteditable>
+var Meal = Backbone.Model.extend({
+  defaults: {
+    "appetizer":  "caesar salad",
+    "entree":     "ravioli",
+    "dessert":    "cheesecake"
+  }
+});
+
+alert("Dessert will be " + (new Meal).get('dessert'));
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.toJSON</h3>
+          <p>Retourne un JSON des attributs du modèle</p>
+          <pre><code data-trim contenteditable>
+var artist = new Backbone.Model({
+  firstName: "Wassily",
+  lastName: "Kandinsky"
+});
+
+artist.set({birthday: "December 16, 1866"});
+
+alert( artist.toJSON() );
+//{
+//  firstName: "Wassily",
+//  lastName: "Kandinsky",
+//  birthday: "December 16, 1866"
+//}
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.urlRoot</h3>
+          <p>Base de l'url permettant de générer l'url finale</p>
+          <hr>
+          <h3>model.url</h3>
+          <pre><code data-trim contenteditable>
+var Book = Backbone.Model.extend({urlRoot : '/books'});
+
+var solaris = new Book({id: "1083-lem-solaris"});
+
+alert(solaris.url()); // /books/1083-lem-solaris
+          </code></pre>
+        </section>        
+
+        <section>
+          <h3>model.fetch</h3>
+          <ul>
+            <li>Récupérer les données de l'API</li>
+            <li>Utilise la méthode ajax de jQuery, produit un HTTP GET</li>
+            <li>Un événement <code>change</code> est émit si des attributs on changés</li>
+          </ul>
+          <pre><code data-trim contenteditable>
+var book = new Book();
+
+book.on("change", function(){ alert('The book has changed'); });
+
+book.fetch({
+  success(model, response, options){
+    // the success callback of jquery
+  }
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.save</h3>
+          <ul>
+            <li>Sauvegarde les données via l'API</li>
+            <li>Créer le modèle via un HTTP POST s'il est nouveau</li>
+            <li>Ou est mise à jour au travers d'un HTTP PUT</li>
+          </ul>
+          <pre><code data-trim contenteditable>
+var book = new Backbone.Model({
+  title: "The Rough Riders",
+  author: "Theodore Roosevelt"
+});
+
+book.save();
+
+book.save({author: "Teddy"});
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.destroy</h3>
+          <ul>
+            <li>Détruit la ressource</li>
+            <li>Envoi un HTTP DELETE sur l'API</li>
+          </ul>
+          <pre><code data-trim contenteditable>
+book.destroy({
+  success: function(model, response, options) {
+    ...
+  }
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.validate</h3>
+          <ul>
+            <li>Methode à surcharger pour la validation</li>
+            <li>Automatiquement appelée avant un save</li>
+            <li>Peut être aussi appelée avant un set avec l'option <code>{validate:true}</code></li>
+          </ul>
+          <pre><code data-trim contenteditable>
+var Chapter = Backbone.Model.extend({
+  validate: function(attrs, options) {
+    if (attrs.end < attrs.start) {
+      return "can't end before it starts";
+    }
+  }
+});
+
+var one = new Chapter({
+  title : "Chapter One: The Beginning"
+});
+
+one.on("invalid", function(model, error) {
+  alert(model.get("title") + " " + error);
+});
+
+one.save({
+  start: 15,
+  end:   10
+});
+          </code></pre>
+        </section>
+
+        <section>
+          <h3>model.parse</h3>
+          <ul>
+            <li>Fonction appelée à chaque retour de données de l'API</li>
+            <li>A en paramètre le retour brut de l'API</li>
+            <li>Doit retourner les attributs seuls</li>
+          </ul>
+          <pre><code data-trim contenteditable>
+//{
+//  statut: 'OK',
+//  api_client: 'mobile',
+//  data: {
+//    title: "Javascript: The Good Parts",
+//    author: "D Crockford"
+//  }
+//}
+
+var Book = Backbone.Model.extend({
+  parse: function(response, options)  {
+    return response.data;
+  }
+});
+          </code></pre>
+        </section>
+
         <section>
           <h3>Collections</h3>
           <ul>
