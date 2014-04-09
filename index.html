@@ -710,14 +710,14 @@ var Book = Backbone.Model.extend({
         </section>
 
         <section>
-          <h3>Collections</h3>
+          <h3>Collection</h3>
           <ul>
             <li>Ensemble de models</li>
             <li>Bénéficie des fonctions de manipulation d'Underscore</li>
           </ul>
         </section>
         <section>
-          <h3>Collections</h3>
+          <h3>Collection</h3>
           <pre><code data-trim contenteditable>
 var Book = Backbone.Model.extend();
 var Library = Backbone.Collection.extend({
@@ -737,6 +737,17 @@ var library = new Library([
   }
 ]);
           </code></pre>
+        </section>
+        <section>
+          <h3>Event</h3>
+          <ul>
+            <li>"add" (model, collection, options) — when a model is added to a collection.</li>
+            <li>"sort" (collection, options) — when the collection has been re-sorted.</li>
+            <li>"change" (model, options) — when a model's attributes have changed.</li>
+            <li>"change:[attribute]" (model, value, options) — when a specific attribute has been updated.</li>
+            <li>"request" (model_or_collection, xhr, options) — when a model or collection has started a request to the server.</li>
+            <li>"sync" (model_or_collection, resp, options) — when a model or collection has been successfully synced with the server.</li>
+          </ul>
         </section>
         <section>
           <h3>view</h3>
@@ -819,18 +830,29 @@ var Bookmark = Backbone.View.extend({
 });
           </code></pre>
         </section>
-        
-        
-      </section>
+        <section>
+          <h3>Router</h3>
+          <pre><code data-trim contenteditable>
+var Workspace = Backbone.Router.extend({
 
-      <section>
-        <section>
-          <h2>Marionette</h2>
-          <p><small><a href="http://marionettejs.com">marionettejs.com</a></small></p>
+  routes: {
+    "help":                 "help",    // #help
+    "search/:query":        "search",  // #search/kiwis
+    "search/:query/p:page": "search"   // #search/kiwis/p7
+  },
+
+  help: function() {
+    ...
+  },
+
+  search: function(query, page) {
+    ...
+  }
+
+});
+          </code></pre>
         </section>
-        <section>
-          <p><a href="/pdf/unsuck_your_backbonejs.pdf">SLIDES</a></p>
-        </section>
+        
       </section>
 
       <section>
@@ -849,6 +871,15 @@ var Bookmark = Backbone.View.extend({
           </ul>
         </section>
       </section>
+
+      <section>
+        <section>
+          <h2>Marionette</h2>
+          <p><small><a href="http://marionettejs.com">marionettejs.com</a></small></p>
+        </section>
+        <section>
+          <p><a href="/pdf/unsuck_your_backbonejs.pdf">SLIDES</a></p>
+        </section>
       </section>
 
       <section>
@@ -954,7 +985,6 @@ module.exports = function(grunt) {
           </ul>
         </section>
       </section>
-      </section>
 
       <section>
         <section>
@@ -1035,6 +1065,9 @@ npm install -g yo
       <section>
         <section>
           <h2>GIT</h2>
+        </section>
+        <section>
+          <p><a href="/pdf/git.pdf">SLIDES pdf</a></p>
         </section>
       </section>
 <!--
