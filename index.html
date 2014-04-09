@@ -94,7 +94,7 @@
           </a>
         </section>              
       </section>
-
+<!--
       <section>
         <section>
           <h2>CSS 3</h2>
@@ -122,7 +122,7 @@
           <p></p>
         </section>
       </section>
-
+-->
       <section>
         <section>
           <h2>Préprocesseur CSS</h2>
@@ -425,7 +425,6 @@ compass watch
           <ul>
             <li>LESS</li>
             <li>Stylus</li>
-            <li>Rework</li>
           </ul>
         </section>
       </section>
@@ -438,6 +437,10 @@ compass watch
           <a class="image" href="img/js-tools.jpeg" target="_blank">
             <img src="img/js-tools.jpeg" />
           </a>
+        </section>
+        <section>
+          <h3>Functional Programming in 5 Minutes</h3>
+          <p><a href="http://slid.es/gsklee/functional-programming-in-5-minutes">SLIDES online</a></p>
         </section>
         <section>
           <h3>ressources</h3>
@@ -823,36 +826,188 @@ var Bookmark = Backbone.View.extend({
       <section>
         <section>
           <h2>Marionette</h2>
+          <p><small><a href="http://marionettejs.com">marionettejs.com</a></small></p>
+        </section>
+        <section>
+          <p><a href="/pdf/unsuck_your_backbonejs.pdf">SLIDES</a></p>
         </section>
       </section>
 
       <section>
         <section>
-          <h2>Require</h2>
+          <h2>Require.js</h2>
+          <p><small><a href="http://requirejs.org">requirejs.org</a></small></p>
         </section>
+        <section>
+          <p><a href="/pdf/slidesrequirejs.pdf">SLIDES</a></p>
+        </section>
+        <section>
+          <h3>Les autres</h3>
+          <ul>
+            <li>Browserify</li>
+            <li>ES6 Module</li>
+          </ul>
+        </section>
+      </section>
       </section>
 
       <section>
         <section>
           <h2>Node.js</h2>
+          <p><smal><a href="http://nodejs.org">nodejs.org</a></smal></p>
+        </section>
+        <section>
+          <h3>Node.js</h3>
+          <ul>
+            <li>Moteur JavaScript V8 de Google</li>
+            <li>Avec accès aux APIs système <small>Net, HTTP, OS, Process, File System</small></li>
+            <li>Permet de créer des serveurs</li>
+            <li>Mono-thread…</li>
+            <li>…mais Asynchrone</li>
+          </ul>
+        </section>
+        <section>
+          <h3>NPM</h3>
+          <ul>
+            <li>Node Packaged Modules</li>
+            <li>Gère les dépendances d'une application Node</li>
+            <li>Dépendances listées dans <code>package.json</code></li>
+          </ul>
         </section>
       </section>
 
       <section>
         <section>
           <h2>Grunt</h2>
+          <p><small><a href="http://gruntjs.com">gruntjs.com</a></small></p>
         </section>
+        <section>
+          <h3>Grunt</h3>
+          <ul>
+            <li>Task runner</li>
+            <li>Produit du code prêt pour la production en une commande</li>
+            <li>Aide au developpement grâce à l'automatisation de tâches répétitives</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Grunt</h3>
+          <ul>
+            <li>Pourquoi pas un makefile ?</li>
+            <li>Pas grand monde à l'aise avec le shell</li>
+            <li>Makefile a une approche script</li>
+            <li>Grunt a une approche de configuration modulaire</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Grunt</h3>
+          <p>Beaucoup de plugin existant</p>
+          <ul>
+            <li>CoffeeScript</li>
+            <li>Handlebars</li>
+            <li>Sass</li>
+            <li>JSHint</li>
+            <li>LiveReload</li>
+            <li>Proxy</li>
+            <li>Mocha</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Grunt</h3>
+          <ul>
+            <li>Se présente sous la forme d'un <code>Gruntfile.js</code></li>
+            <li>Commandes accesibles en ligne de commande</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Grunt</h3>
+          <pre><code data-trim contenteditable>
+module.exports = function(grunt) {
+
+  // Project configuration.
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+      build: {
+        src: 'src/<%= pkg.name %>.js',
+        dest: 'build/<%= pkg.name %>.min.js'
+      }
+    }
+  });
+
+  // Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  // Default task(s).
+  grunt.registerTask('default', ['uglify']);
+
+};
+          </code></pre>
+        </section>
+        <section>
+          <h3>Les autres</h3>
+          <ul>
+            <li>Gulp</li>
+            <li>Brocolli</li>
+          </ul>
+        </section>
+      </section>
       </section>
 
       <section>
         <section>
           <h2>Bower</h2>
+          <p><small><a href="http://bower.io">bower.io</a></small></p>
+        </section>
+        <section>
+          <h3>Bower</h3>
+          <ul>
+            <li>Package manager pour le front</li>
+            <li>Générique</li>
+            <li>Utilise git</li>
+            <li>Principes de Semantic Versioning</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Bower</h3>
+          <pre><code data-trim contenteditable>
+bower install underscore
+bower install jqueryui#1.10.4
+
+bower search calendar
+          </code></pre>
         </section>
       </section>
 
       <section>
         <section>
           <h2>Yo</h2>
+          <p><small><a href="https://github.com/yeoman/yo">github.com/yeoman/yo</a></small></p>
+        </section>
+        <section>
+          <h3>yo</h3>
+          <ul>
+            <li>Outil de scaffolding</li>
+            <li>Génère des config adaptées de Grunt et dépendances Bower</li>
+            <li>Plusieurs générateurs officiels + non-officiels</li>
+            <li>Possibilité d'écrire son générateur</li>
+          </ul>
+        </section>
+        <section>
+          <h3>yo</h3>
+          <pre><code data-trim contenteditable>
+npm install generator-webapp
+yo webapp
+
+npm install generator-backbone
+yo backbone [app-name]
+yo backbone:model blog
+yo backbone:collection blog
+yo backbone:router blog
+yo backbone:view blog
+          </code></pre>
         </section>
       </section>
 
@@ -860,12 +1015,20 @@ var Bookmark = Backbone.View.extend({
         <section>
           <h2>Yeoman</h2>
           <h3>Yo + Grunt + Bower</h3>
+          <p><small><a href="http://yeoman.io">yeoman.io</a></small></p>
+          <pre><code data-trim contenteditable>
+npm install -g yo
+          </code></pre>
         </section>
       </section>
 
       <section>
         <section>
           <h2>API REST</h2>
+        </section>
+        <section>
+          <p><a href="http://nodejsparis.bitbucket.org/20140312/rest_world/">SLIDES online</a></p>
+          <p><a href="/pdf/restworld.pdf">SLIDES pdf</a></p>
         </section>
       </section>
 
